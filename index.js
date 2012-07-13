@@ -1,1 +1,1 @@
-module.export = require('./lib/pagination.js');
+module.exports = require('./lib/pagination.js');
