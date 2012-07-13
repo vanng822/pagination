@@ -12,7 +12,7 @@ function test() {
 		totalResult : 100
 	});
 	
-	assert.deepEqual('<div class="paginator"><a href="/?page=4" class="paginator-previous">Previous</a><a href="/?page=3" class="paginator-page">3</a><a href="/?page=4" class="paginator-page">4</a><a href="/?page=5" class="paginator-current">5</a><a href="/?page=6" class="paginator-page">6</a><a href="/?page=7" class="paginator-page">7</a><a href="/?page=6" class="paginator-next">Next</a></div>', item.render());
+	assert.equal('<div class="paginator"><a href="/?page=4" class="paginator-previous">Previous</a><a href="/?page=3" class="paginator-page">3</a><a href="/?page=4" class="paginator-page">4</a><a href="/?page=5" class="paginator-current">5</a><a href="/?page=6" class="paginator-page">6</a><a href="/?page=7" class="paginator-page">7</a><a href="/?page=6" class="paginator-next">Next</a></div>', item.render());
 }
 
 test();
