@@ -9,7 +9,7 @@ function test() {
 		pageLinks : 7,
 		totalResult : 100
 	});
-	console.log(item.calc());
+	
 	assert.deepEqual({
 		prelink : "",
 		current : 10,
@@ -41,7 +41,7 @@ function test() {
 		toResult : 80,
 		totalResult : 100,
 		pageCount : 10
-	}, item.calc());
+	}, item.getPaginationData());
 
 	var item = new Paginator({
 		prelink : '/',
