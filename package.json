@@ -1,9 +1,13 @@
 {
-  "name"          : "pagination",
-  "description"   : "Pagination for javascript/nodejs",
-  "keywords"      : ["pagination", "nodejs"],
-  "author"        : "Nguyen Van Nhu",
-  "contributors"  : [],
-  "dependencies"  : [],
-  "repository"    : {"type": "git", "url": "git://github.com/vanng822/pagination.git"},
+	"name": "pagination",
+	"description": "Pagination for javascript/nodejs",
+	"keywords": ["pagination", "nodejs"],
+	"author": "Nguyen Van Nhu",
+	"contributors": [],
+	"dependencies": [],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/vanng822/pagination.git"
+	},
+	"version": "0.1.0"
 }
