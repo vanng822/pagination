@@ -162,7 +162,6 @@ function test() {
 		rowsPerPage : 10,
 		pageLinks : 4,
 		current : 5,
-		template : '{PreviousPageLink} <strong>{CurrentPageReport}</strong> {NextPageLink}',
 		translator : null
 	}, item.options);
 
