@@ -18,7 +18,7 @@ function test() {
 		first : 1,
 		last : null,
 		range : [4, 5, 6, 7, 8, 9, 10],
-		fromResult : 40,
+		fromResult : 91,
 		toResult : 100,
 		totalResult : 100,
 		pageCount : 10
@@ -37,10 +37,51 @@ function test() {
 		first : 1,
 		last : 10,
 		range : [4, 5, 6, 7, 8, 9, 10],
-		fromResult : 40,
-		toResult : 100,
+		fromResult : 71,
+		toResult : 80,
 		totalResult : 100,
 		pageCount : 10
+	}, item.calc());
+
+	var item = new Paginator({
+		prelink : '/',
+		current : 10,
+		pageLinks : 7,
+		totalResult : 98
+	});
+
+	assert.deepEqual({
+		prelink : '/',
+		current : 10,
+		previous : 9,
+		next : null,
+		first : 1,
+		last : null,
+		range : [4, 5, 6, 7, 8, 9, 10],
+		fromResult : 91,
+		toResult : 98,
+		totalResult : 98,
+		pageCount : 10
+	}, item.calc());
+	
+	var item = new Paginator({
+		prelink : '/',
+		pageLinks : 7,
+		totalResult : 9
+	});
+
+	assert.deepEqual({
+		prelink : '/',
+		current : 1,
+		previous : null,
+		next : null,
+		first : null,
+		last : null,
+		range : [],
+		fromResult : 1,
+		toResult : 9,
+		totalResult : 9,
+		pageCount : 1
 	}, item.calc());
 
 	var item = new Paginator({
@@ -56,8 +97,8 @@ function test() {
 		first : 1,
 		last : 10,
 		range : [2, 3, 4, 5, 6, 7, 8],
-		fromResult : 20,
-		toResult : 80,
+		fromResult : 41,
+		toResult : 50,
 		totalResult : 100,
 		pageCount : 10
 	}, item.calc());
@@ -76,8 +117,8 @@ function test() {
 		first : 1,
 		last : 10,
 		range : [2, 3, 4, 5, 6, 7],
-		fromResult : 20,
-		toResult : 70,
+		fromResult : 41,
+		toResult : 50,
 		totalResult : 100,
 		pageCount : 10
 	}, item.calc());
@@ -95,8 +136,8 @@ function test() {
 		first : 1,
 		last : 10,
 		range : [3, 4, 5, 6],
-		fromResult : 30,
-		toResult : 60,
+		fromResult : 41,
+		toResult : 50,
 		totalResult : 100,
 		pageCount : 10
 	}, item.calc());
@@ -115,8 +156,8 @@ function test() {
 		first : 1,
 		last : 10,
 		range : [3, 4, 5, 6],
-		fromResult : 30,
-		toResult : 60,
+		fromResult : 41,
+		toResult : 50,
 		totalResult : 100,
 		pageCount : 10
 	}, item.calc());
@@ -134,8 +175,8 @@ function test() {
 		first : 1,
 		last : 10,
 		range : [3, 4, 5, 6, 7],
-		fromResult : 30,
-		toResult : 70,
+		fromResult : 41,
+		toResult : 50,
 		totalResult : 100,
 		pageCount : 10
 	}, item.calc());
@@ -155,7 +196,7 @@ function test() {
 	item.set('totalResult', 3000);
 	item.set('notSupported', 'notfound');
 	// ugly :-)
-	item.set('translator',null);
+	item.set('translator', null);
 	assert.deepEqual({
 		totalResult : 3000,
 		prelink : '/',
