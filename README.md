@@ -17,13 +17,15 @@ Pagination for javascript/nodejs
 ### OR 
 
 	var pagination = require('pagination');
-	var paginator = new pagination.ItemPaginator({prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+	var paginator = new pagination.ItemPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
 	console.log(paginator.render());
 	
 	// output (without newlines)
 	<div class="paginator">
-		<span class="paginator-current-report">Results 1 - 200 of 10020</span>
-		<a href="/?page=2" class="paginator-next">Next</a>
+		<span class="paginator-current-report">Results 401 - 600 of 10020</span>
+		<a href="/?page=1" class="paginator-first">First</a>
+		<a href="/?page=2" class="paginator-previous">Previous</a>
+		<a href="/?page=4" class="paginator-next">Next</a>
 		<a href="/?page=51" class="paginator-last">Last</a>
 	</div>
 
