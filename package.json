@@ -3,6 +3,7 @@
 	"description": "Pagination for javascript/nodejs",
 	"keywords": ["pagination", "nodejs"],
 	"author": "Nguyen Van Nhu",
+	"homepage": "https://github.com/vanng822/pagination",
 	"contributors": [],
 	"dependencies": [],
 	"repository": {
