@@ -49,29 +49,24 @@ Pagination for javascript/nodejs
 	  pageCount: 51 }
 	  
 ## Options
+Object to pass to paginator classes (second argument when using create function)
 
-totalResult: {Integer}
-==========
+### totalResult: {Integer}
 Number of total items in result set
 	
-prelink: {Integer}
-==========
+### prelink: {String}
 Link to append the page-param
 
-rowsPerPage: {Integer}
-==========
+### rowsPerPage: {Integer}
 Number of items per page, default to 10
 
-pageLinks: {Integer}
-==========
-Number of links to create in page range, default to 5
+### pageLinks: {Integer}
+Number of links to create in page range, default to 5. This value will be ignored when using item pagination.
 
-current: {Integer}
-==========
+### current: {Integer}
 Indicate which page is the current one. Page always starts with 1.
 
-translator: {Function}
-==========
+### translator: {Function}
 For translations of FIRST, NEXT, ... Simple example
 
 	var translations = {
