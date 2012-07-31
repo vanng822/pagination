@@ -48,4 +48,46 @@ Pagination for javascript/nodejs
 	  totalResult: 10020,
 	  pageCount: 51 }
 	  
+## Options
 
+totalResult: {Integer}
+==========
+Number of total items in result set
+	
+prelink: {Integer}
+==========
+Link to append the page-param
+
+rowsPerPage: {Integer}
+==========
+Number of items per page, default to 10
+
+pageLinks: {Integer}
+==========
+Number of links to create in page range, default to 5
+
+current: {Integer}
+==========
+Indicate which page is the current one. Page always starts with 1.
+
+translator: {Function}
+==========
+For translations of FIRST, NEXT, ... Simple example
+
+	var translations = {
+		'PREVIOUS' : 'Voorgaand',
+		'NEXT' : 'Volgende',
+		'FIRST' : 'Eerst',
+		'LAST' : 'Laatste',
+		'CURRENT_PAGE_REPORT' : 'Resulten {FromResult} - {ToResult} van {TotalResult}'
+	};
+	
+	var item = new ItemPaginator({
+		prelink : '/',
+		pageLinks : 5,
+		current : 5,
+		totalResult : 100,
+		translator : function(str) {
+			return translations[str];
+		}
+	});
