@@ -203,7 +203,8 @@ function test() {
 		rowsPerPage : 10,
 		pageLinks : 4,
 		current : 5,
-		translator : null
+		translator : null,
+		translationCache : false
 	}, item.options);
 
 }
