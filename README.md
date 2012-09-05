@@ -47,7 +47,26 @@ Pagination for javascript/nodejs
 	  toResult: 600,
 	  totalResult: 10020,
 	  pageCount: 51 }
-	  
+## Pagination on client side
+	<html>
+		<head>
+		<script src="../lib/pagination.js"></script>
+		</head>
+		<body>
+			<div id="paging"></div>
+			<script type="text/javascript">
+			(function() {
+				var paginator = new pagination.ItemPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
+				var html = paginator.render();
+				var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+				html += paginator.render();
+				document.getElementById("paging").innerHTML = html;
+			})();
+			</script>
+		</body>
+	</html>
+
+
 ## Options
 Object to pass to paginator classes (second argument when using create function)
 
