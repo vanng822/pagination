@@ -1,11 +1,12 @@
 {
 	"name": "pagination",
 	"description": "Pagination for javascript/nodejs",
-	"keywords": ["pagination", "nodejs"],
+	"keywords": ["pagination", "nodejs", "client"],
 	"author": "Nguyen Van Nhu",
 	"homepage": "https://github.com/vanng822/pagination",
 	"contributors": [],
 	"dependencies": [],
+	"devDependencies": ["vows"],
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/vanng822/pagination.git"
