@@ -2,6 +2,9 @@
 
 Pagination for javascript/nodejs
 
++[![build status](https://secure.travis-ci.org/vanng822/pagination.png)](http://travis-ci.org/vanng822/pagination)
+
+
 ## usage example
 
 	var pagination = require('pagination');

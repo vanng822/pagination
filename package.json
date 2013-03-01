@@ -11,5 +11,8 @@
 		"type": "git",
 		"url": "git://github.com/vanng822/pagination.git"
 	},
-	"version": "0.3.2"
+	"version": "0.3.2",
+	"scripts": {
+  		"test": "vows --spec tests/*"
+	},
 }
