@@ -218,7 +218,8 @@ vows.describe('Test suite for Paginator').addBatch({
 			pageLinks : 4,
 			current : 5,
 			translator : null,
-			translationCache : false
+			translationCache : false,
+			translationCacheKey: 'en'
 		}, item.options);
 
 	}

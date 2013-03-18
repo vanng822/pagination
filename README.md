@@ -90,7 +90,10 @@ Indicate which page is the current one. Page always starts with 1.
 
 ### translationCache: {Boolean}
 To indicate if the result from CURRENT_PAGE_REPORT translation can be cached or not. Default is false.
-The cache is global and will be the same for all instances therefore you should NOT set to true if you want different translations/formats.
+The cache is global and will be the same for all instances which have specified translationCacheKey as bellow.
+
+### translationCacheKey: {String}
+For supporting multiple versions of translation of CURRENT_PAGE_REPORT. It can use for multilanguages or different formats. Default is "en"
 
 ### translator: {Function}
 For translations of FIRST, NEXT, ... Simple example
