@@ -14,8 +14,19 @@ Pagination for javascript/nodejs
 ### OR
 
 	var pagination = require('pagination');
-	var paginator = new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+	var paginator = new pagination.SearchPaginator({prelink:'/', current: 10, rowsPerPage: 200, totalResult: 10020});
 	console.log(paginator.render());
+	
+	// output (without newlines)
+	<div class="paginator">
+		<a href="/?page=9" class="paginator-previous">Previous</a>
+		<a href="/?page=8" class="paginator-page paginator-page-first">8</a>
+		<a href="/?page=9" class="paginator-page">9</a>
+		<a href="/?page=10" class="paginator-current">10</a>
+		<a href="/?page=11" class="paginator-page">11</a>
+		<a href="/?page=12" class="paginator-page paginator-page-last">12</a>
+		<a href="/?page=11" class="paginator-next">Next</a>
+	</div>
 
 ### OR 
 
