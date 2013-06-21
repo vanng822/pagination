@@ -111,6 +111,8 @@ vows.describe('Test suite for translation').addBatch({
 		});
 
 		assert.equal('<div class="paginator"><span class="paginator-current-report">Results 41 - 50 of 100</span><a href="/?page=1" class="paginator-first">First</a><a href="/?page=4" class="paginator-previous">Previous</a><a href="/?page=6" class="paginator-next">Next</a><a href="/?page=10" class="paginator-last">Last</a></div>', enItem.render());
-
+		// testing if they affect each other on the translations
+		assert.equal('<div class="paginator"><span class="paginator-current-report">Resulten 41 - 50 van 100</span><a href="/?page=1" class="paginator-first">Eerst</a><a href="/?page=4" class="paginator-previous">Voorgaand</a><a href="/?page=6" class="paginator-next">Volgende</a><a href="/?page=10" class="paginator-last">Laatste</a></div>', item.render());
+		assert.equal('<div class="paginator"><span class="paginator-current-report">Results 41 - 50 of 100</span><a href="/?page=1" class="paginator-first">First</a><a href="/?page=4" class="paginator-previous">Previous</a><a href="/?page=6" class="paginator-next">Next</a><a href="/?page=10" class="paginator-last">Last</a></div>', enItem.render());
 	}
 }).export(module)
