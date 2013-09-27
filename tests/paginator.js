@@ -193,11 +193,39 @@ vows.describe('Test suite for Paginator').addBatch({
 			totalResult : 100
 		});
 
-		assert.equal('/?', item.preparePreLink('/'));
-		assert.equal('/?q=testing&', item.preparePreLink('/?q=testing'));
-		assert.equal('http//igeonote.com/?', item.preparePreLink('http//igeonote.com/'));
-		assert.equal('http//sibox.isgoodness.com/q/testing?', item.preparePreLink('http//sibox.isgoodness.com/q/testing'));
+		assert.equal('/?page=', item.preparePreLink('/'));
+		assert.equal('/?q=testing&page=', item.preparePreLink('/?q=testing'));
+		assert.equal('http//igeonote.com/?page=', item.preparePreLink('http//igeonote.com/'));
+		assert.equal('http//sibox.isgoodness.com/q/testing?page=', item.preparePreLink('http//sibox.isgoodness.com/q/testing'));
+		
+	},
+	testPreparePreLinkParamName : function() {
+		var item = new Paginator({
+			prelink : '/',
+			current : 5,
+			pageLinks : 4,
+			totalResult : 100,
+			pageParamName: 'p'
+		});
 
+		assert.equal('/?p=', item.preparePreLink('/'));
+		assert.equal('/?q=testing&p=', item.preparePreLink('/?q=testing'));
+		assert.equal('http//igeonote.com/?p=', item.preparePreLink('http//igeonote.com/'));
+		assert.equal('http//sibox.isgoodness.com/q/testing?p=', item.preparePreLink('http//sibox.isgoodness.com/q/testing'));
+	},
+	testPreparePreLinkSlash : function() {
+		var item = new Paginator({
+			prelink : '/',
+			current : 5,
+			pageLinks : 4,
+			totalResult : 100,
+			slashSeparator: true
+		});
+
+		assert.equal('/page/', item.preparePreLink('/'));
+		assert.equal('/q/testing/page/', item.preparePreLink('/q/testing'));
+		assert.equal('http//igeonote.com/page/', item.preparePreLink('http//igeonote.com/'));
+		assert.equal('http//sibox.isgoodness.com/q/testing/page/', item.preparePreLink('http//sibox.isgoodness.com/q/testing'));
 	},
 	testSet : function() {
 		var item = new Paginator({
@@ -219,7 +247,9 @@ vows.describe('Test suite for Paginator').addBatch({
 			current : 5,
 			translator : null,
 			translationCache : false,
-			translationCacheKey: 'en'
+			translationCacheKey: 'en',
+			pageParamName: 'page',
+			slashSeparator: false
 		}, item.options);
 
 	}

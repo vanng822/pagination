@@ -126,3 +126,9 @@ For translations of FIRST, NEXT, ... Simple example
 			return translations[str];
 		}
 	});
+
+### pageParamName: {String}
+The name of the page parameter. Default is "page"
+
+### slashSeparator: {Boolean}
+Indicate if using slash instead of equal sign, ie /page/2 instead of /?page=2, default is false.
