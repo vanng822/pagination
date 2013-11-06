@@ -185,6 +185,69 @@ vows.describe('Test suite for Paginator').addBatch({
 			pageCount : 10
 		}, item.getPaginationData());
 	},
+	getPaginationData1 : function() {
+		var item = new Paginator({
+			prelink : '/',
+			pageLinks : 5,
+			current : 1,
+			totalResult : 100
+		});
+		assert.deepEqual({
+			prelink : '/',
+			current : 1,
+			previous : null,
+			next : 2,
+			first : null,
+			last : 10,
+			range : [1, 2, 3, 4, 5],
+			fromResult : 1,
+			toResult : 10,
+			totalResult : 100,
+			pageCount : 10
+		}, item.getPaginationData());
+	},
+	getPaginationData3 : function() {
+		var item = new Paginator({
+			prelink : '/',
+			pageLinks : 5,
+			current : 3,
+			totalResult : 100
+		});
+		assert.deepEqual({
+			prelink : '/',
+			current : 3,
+			previous : 2,
+			next : 4,
+			first : 1,
+			last : 10,
+			range : [1, 2, 3, 4, 5],
+			fromResult : 21,
+			toResult : 30,
+			totalResult : 100,
+			pageCount : 10
+		}, item.getPaginationData());
+	},
+	getPaginationData4 : function() {
+		var item = new Paginator({
+			prelink : '/',
+			pageLinks : 5,
+			current : 4,
+			totalResult : 100
+		});
+		assert.deepEqual({
+			prelink : '/',
+			current : 4,
+			previous : 3,
+			next : 5,
+			first : 1,
+			last : 10,
+			range : [2, 3, 4, 5, 6],
+			fromResult : 31,
+			toResult : 40,
+			totalResult : 100,
+			pageCount : 10
+		}, item.getPaginationData());
+	},
 	testPreparePreLink : function() {
 		var item = new Paginator({
 			prelink : '/',
