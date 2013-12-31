@@ -15,6 +15,9 @@
 	"scripts": {
 		"test": "vows --spec tests/*"
 	},
+	"bugs": {
+		"url": "https://github.com/vanng822/pagination/issues"
+	},
 	"licenses": [
 		{
 			"type": "MIT",
