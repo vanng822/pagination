@@ -297,18 +297,19 @@ vows.describe('Test suite for Paginator').addBatch({
 			pageLinks : 4,
 			totalResult : 100
 		});
-		
+		var test_translator = function() {}
 		item.set('totalResult', 3000);
 		item.set('notSupported', 'notfound');
 		// ugly :-)
-		item.set('translator', null);
+		
+		item.set('translator', test_translator);
 		assert.deepEqual({
 			totalResult : 3000,
 			prelink : '/',
 			rowsPerPage : 10,
 			pageLinks : 4,
 			current : 5,
-			translator : null,
+			translator : test_translator,
 			translationCache : false,
 			translationCacheKey: 'en',
 			pageParamName: 'page',
