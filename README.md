@@ -61,6 +61,7 @@ Pagination for javascript/nodejs
 	  toResult: 600,
 	  totalResult: 10020,
 	  pageCount: 51 }
+	  
 ## Pagination on client side
 	<html>
 		<head>
@@ -79,6 +80,50 @@ Pagination for javascript/nodejs
 			</script>
 		</body>
 	</html>
+
+## Classes
+### SearchPaginator(options)
+See http://developer.yahoo.com/ypatterns/navigation/pagination/search.html
+
+### ItemPaginator(options)
+See http://developer.yahoo.com/ypatterns/navigation/pagination/item.html
+
+### TemplatePaginator(options)
+This class will render the markup as desired. The options must contains property "template"
+It can be either a template string or a compiled template. The local variables available in the template are
+
+`prelink` String
+`current` Integer
+`previous` Integer
+`next` Integer
+`first` Integer
+`last` Integer
+`range` Array
+`fromResult` Integer
+`toResult` Integer
+`totalResult` Integer
+`pageCount` Integer
+`translations` Object with properties NEXT, PREVIOUS, FIRST, LAST, CURRENT_PAGE_REPORT
+
+## API
+### Paginator.getPaginationData()
+Return an object contains data for rendering markup
+
+### Paginator.set(option, value)
+Set value to a single for option. See options section bellow
+
+### Paginator.preparePreLink(prelink)
+Append page param to the link
+
+### Paginator.render()
+Return the rendered markup
+
+### pagination.create(type, options)
+Wrapper for create instance of classes above
+
+### pagination.TemplateEngine.parse(str, options)
+
+### pagination.TemplateEngine.compile(str, options)
 
 
 ## Options

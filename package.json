@@ -6,12 +6,12 @@
 	"homepage": "https://github.com/vanng822/pagination",
 	"contributors": [],
 	"dependencies": [],
-	"devDependencies": ["vows"],
+	"devDependencies": {"vows": "*", "ejs": "*"},
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/vanng822/pagination.git"
 	},
-	"version": "0.3.8",
+	"version": "0.4.0",
 	"scripts": {
 		"test": "vows --spec tests/*"
 	},
