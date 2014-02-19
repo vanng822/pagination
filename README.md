@@ -83,34 +83,34 @@ Pagination for javascript/nodejs
 
 ## Classes
 ### SearchPaginator(options)
-`options` See Options bellow
+* `options` See Options bellow
 
 See also http://developer.yahoo.com/ypatterns/navigation/pagination/search.html
 
 ### ItemPaginator(options)
-`options` See Options bellow
+* `options` See Options bellow
 
 See also http://developer.yahoo.com/ypatterns/navigation/pagination/item.html
 
 ### TemplatePaginator(options)
-`options` See Options bellow
+* `options` See Options bellow
 
 This class will render the markup as desired. The options must contains property "template"
 It can be either a template string or a compiled template. The local variables available in the template are
 
-`prelink` String
-`preparedPreLink` String
-`current` Integer
-`previous` Integer
-`next` Integer
-`first` Integer
-`last` Integer
-`range` Array
-`fromResult` Integer
-`toResult` Integer
-`totalResult` Integer
-`pageCount` Integer
-`translations` Object with properties NEXT, PREVIOUS, FIRST, LAST, CURRENT_PAGE_REPORT
+* `prelink` String
+* `preparedPreLink` String
+* `current` Integer
+* `previous` Integer
+* `next` Integer
+* `first` Integer
+* `last` Integer
+* `range` Array
+* `fromResult` Integer
+* `toResult` Integer
+* `totalResult` Integer
+* `pageCount` Integer
+* `translations` Object with properties NEXT, PREVIOUS, FIRST, LAST, CURRENT_PAGE_REPORT
 
 ## API
 ### Paginator.getPaginationData()
@@ -120,20 +120,25 @@ Return an object contains data for rendering markup. See example above.
 Set value to a single for option. See options section bellow
 
 ### Paginator.preparePreLink(prelink)
+* `prelink` String
+
 Append page param to the link
 
 ### Paginator.render()
 Return the rendered markup
 
 ### pagination.create(type, options)
+* `type` String
+* `options` Object see Options section bellow
+
 Wrapper for create instance of classes above
 
 ### pagination.TemplateEngine.parse(str, options)
 See pagination.TemplateEngine.compile bellow
 
 ### pagination.TemplateEngine.compile(str, options)
-`str` Template string
-`options` object which can contains .open .close .cache and .id
+* `str` Template string
+* `options` object which can contains .open .close .cache and .id
 
 ## Options
 Object to pass to paginator classes (second argument when using create function)
@@ -188,5 +193,5 @@ The name of the page parameter. Default is "page"
 Indicate if using slash instead of equal sign, ie /page/2 instead of /?page=2, default is false.
 
 ### template: {String | Function}
-This can be a template string or a compile template (function).
-The compile function will be called with an object as argument.
+This can be a template string or a compiled template (function).
+The compiled function will be called with an object as argument.
