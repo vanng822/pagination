@@ -83,16 +83,23 @@ Pagination for javascript/nodejs
 
 ## Classes
 ### SearchPaginator(options)
-See http://developer.yahoo.com/ypatterns/navigation/pagination/search.html
+`options` See Options bellow
+
+See also http://developer.yahoo.com/ypatterns/navigation/pagination/search.html
 
 ### ItemPaginator(options)
-See http://developer.yahoo.com/ypatterns/navigation/pagination/item.html
+`options` See Options bellow
+
+See also http://developer.yahoo.com/ypatterns/navigation/pagination/item.html
 
 ### TemplatePaginator(options)
+`options` See Options bellow
+
 This class will render the markup as desired. The options must contains property "template"
 It can be either a template string or a compiled template. The local variables available in the template are
 
 `prelink` String
+`preparedPreLink` String
 `current` Integer
 `previous` Integer
 `next` Integer
@@ -107,7 +114,7 @@ It can be either a template string or a compiled template. The local variables a
 
 ## API
 ### Paginator.getPaginationData()
-Return an object contains data for rendering markup
+Return an object contains data for rendering markup. See example above.
 
 ### Paginator.set(option, value)
 Set value to a single for option. See options section bellow
@@ -122,9 +129,11 @@ Return the rendered markup
 Wrapper for create instance of classes above
 
 ### pagination.TemplateEngine.parse(str, options)
+See pagination.TemplateEngine.compile bellow
 
 ### pagination.TemplateEngine.compile(str, options)
-
+`str` Template string
+`options` object which can contains .open .close .cache and .id
 
 ## Options
 Object to pass to paginator classes (second argument when using create function)
@@ -177,3 +186,7 @@ The name of the page parameter. Default is "page"
 
 ### slashSeparator: {Boolean}
 Indicate if using slash instead of equal sign, ie /page/2 instead of /?page=2, default is false.
+
+### template: {String | Function}
+This can be a template string or a compile template (function).
+The compile function will be called with an object as argument.
