@@ -65,7 +65,7 @@ Pagination for javascript/nodejs
 ## Pagination on client side
 	<html>
 		<head>
-		<script src="../lib/pagination.js"></script>
+		<script src="../release/pagination.full.min.js"></script>
 		</head>
 		<body>
 			<div id="paging"></div>
@@ -80,6 +80,8 @@ Pagination for javascript/nodejs
 			</script>
 		</body>
 	</html>
+
+You can browse example folder for more. Release folder contains all mimified versions for browser. To customize your need you can use ./bin/build.js -h
 
 ## Classes
 ### SearchPaginator(options)
