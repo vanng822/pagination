@@ -15,5 +15,10 @@ vows.describe('Test suite for Paginator').addBatch({
 	createTemplatePaginator : function() {
 		var paginator = pagination.create('template', {template: function(data){}});
 		paginator.render();
+	},
+	createUnsupported : function() {
+		assert.throws(function() {
+				var paginator = pagination.create('blabla');
+			});
 	}
 }).export(module);
