@@ -2,16 +2,14 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-	<script src="../release/pagination.full.min.js"></script>
+	<script src="../release/pagination.s.min.js"></script>
 	</head>
 	<body>
 		<div id="paging"></div>
 		<script type="text/javascript">
 		(function() {
-			var paginator = new pagination.ItemPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
-			var html = paginator.render();
 			var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
-			html += paginator.render();
+			var html = paginator.render();
 			document.getElementById("paging").innerHTML = html;
 		})();
 		</script>

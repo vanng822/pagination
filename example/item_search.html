@@ -2,7 +2,7 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-	<script src="../release/pagination.full.min.js"></script>
+	<script src="../release/pagination.is.min.js"></script>
 	</head>
 	<body>
 		<div id="paging"></div>
@@ -10,7 +10,7 @@
 		(function() {
 			var paginator = new pagination.ItemPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
 			var html = paginator.render();
-			var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+			var paginator = new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
 			html += paginator.render();
 			document.getElementById("paging").innerHTML = html;
 		})();

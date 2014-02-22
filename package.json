@@ -6,7 +6,7 @@
 	"homepage": "https://github.com/vanng822/pagination",
 	"contributors": [],
 	"dependencies": [],
-	"devDependencies": {"vows": "*", "ejs": "*"},
+	"devDependencies": {"vows": "*", "ejs": "*", "uglify-js": "*", "commander": "*"},
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/vanng822/pagination.git"
