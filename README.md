@@ -197,3 +197,7 @@ Indicate if using slash instead of equal sign, ie /page/2 instead of /?page=2, d
 ### template: {String | Function}
 This can be a template string or a compiled template (function).
 The compiled function will be called with an object as argument.
+
+
+## Acknowledgements
+Template engine is taking mostly from https://github.com/vanng822/ejs which is a fork of https://github.com/visionmedia/ejs
