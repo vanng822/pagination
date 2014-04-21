@@ -10,7 +10,6 @@ program
 	.option('-i, --item', 'Include ItemPaginator')
 	.option('-s, --search', 'Include SearchPaginator')
 	.option('-t, --template', 'Include TemplatePaginator')
-	//.option('-r, --release', 'Building release versions')
 	.option('-a, --all', 'Include all: Template Engine, ItemPaginator, SearchPaginator, TemplatePaginator')
 	.parse(process.argv);
 
@@ -34,12 +33,15 @@ if (program.all) {
 	}
 }
 
+releaseContent.push(fs.readFileSync('./lib/browser.js'));
 releaseContent.push(fs.readFileSync('./lib/pagination.js'));
 pkgs.forEach(function(m) {
 	releaseContent.push(fs.readFileSync('./lib/' + m + '.js'));
 	releaseContent.push('exports.module(pagination, pagination.util);');
 });
-var minified = uglifyJs.minify(releaseContent.join(";"), {fromString: true});
+var content = releaseContent.join(";");
+console.log(content);
+var minified = uglifyJs.minify(content, {fromString: true});
 
 if (program.output) {
 	fs.writeFileSync(program.output, minified.code);

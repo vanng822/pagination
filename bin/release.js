@@ -17,8 +17,11 @@ var versions = {
 	't': ['template_paginator']
 };
 
-var paginationContent = fs.readFileSync('./lib/pagination.js');
-var minified = uglifyJs.minify(paginationContent + ';', {fromString: true});
+var paginationContent = [];
+paginationContent.push(fs.readFileSync('./lib/browser.js'));
+paginationContent.push(fs.readFileSync('./lib/pagination.js'));
+
+var minified = uglifyJs.minify(paginationContent.join(';'), {fromString: true});
 if (program.dry) {
 	console.log(minified.code);
 } else {
@@ -26,9 +29,8 @@ if (program.dry) {
 }
 
 Object.keys(versions).forEach(function(v) {
-	var releaseContent = [];
+	var releaseContent = paginationContent.slice(0);
 	var output = './release/pagination.' + v + '.min.js';
-	releaseContent.push(paginationContent);
 	versions[v].forEach(function(m) {
 		releaseContent.push(fs.readFileSync('./lib/' + m + '.js'));
 		releaseContent.push('exports.module(pagination, pagination.util);');
@@ -36,6 +38,7 @@ Object.keys(versions).forEach(function(v) {
 	var minified = uglifyJs.minify(releaseContent.join(";"), {fromString: true});
 	
 	if (program.dry) {
+		console.log(releaseContent.join(";"));
 		console.log(minified.code);
 	} else {
 		fs.writeFileSync(output, minified.code);
