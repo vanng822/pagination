@@ -40,12 +40,12 @@ pkgs.forEach(function(m) {
 	releaseContent.push('exports.module(pagination, pagination.util);');
 });
 var content = releaseContent.join(";");
-console.log(content);
 var minified = uglifyJs.minify(content, {fromString: true});
 
 if (program.output) {
 	fs.writeFileSync(program.output, minified.code);
 } else {
+	console.log(content);
 	console.log(minified.code);
 }
 
