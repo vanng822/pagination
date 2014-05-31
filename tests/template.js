@@ -22,7 +22,7 @@ vows.describe('Test suite for TemplateEngine').addBatch({
 		assert.equal('2', TemplateEngine.compile('{{ switch(first) { case 1: }}first{{ break; case 2: }}{{=first}}{{ } }}', {open: '{{', close : '}}'})({first:2}));
 	},
 	escapeMarkup: function() {
-		assert.equal('%3Cscript%3Ealert%280%29%3B%3C/script%3E', TemplateEngine.compile('<%=script%>')({script:'<script>alert(0);</script>'}));
-		assert.equal('%3Ca%20href%3D%22javascript%3A%3Aalert%280%29%22%3Etest%3C/a%3E', TemplateEngine.compile('<%=tag%>')({tag:'<a href="javascript::alert(0)">test</a>'}));
+		assert.equal('&lt;script&gt;alert(&#39;0&#39;);&lt;/script&gt;', TemplateEngine.compile('<%=script%>')({script:"<script>alert('0');</script>"}));
+		assert.equal('&lt;a href=&quot;/?t=1&amp;p=2&amp;s=3&quot; onclick=&quot;javascript::alert(0)&quot;&gt;test&lt;/a&gt;', TemplateEngine.compile('<%=tag%>')({tag:'<a href="/?t=1&p=2&s=3" onclick="javascript::alert(0)">test</a>'}));
 	}
 }).export(module);
