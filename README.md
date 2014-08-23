@@ -11,6 +11,42 @@ Pagination for javascript/nodejs
 	var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
 	console.log(paginator.render());
 
+### Or customized renderer, example for generating markup for twitter boostrap, see example/twitter.html for template rendering
+
+	var pagination = require('pagination')
+
+	var boostrapPaginator = new pagination.TemplatePaginator({
+		prelink:'/', current: 3, rowsPerPage: 200,
+		totalResult: 10020, slashSeparator: true,
+		template: function(result) {
+			var i, len, prelink;
+			var html = '<div><ul class="pagination">';
+			if(result.pageCount < 2) {
+				html += '</ul></div>';
+				return html;
+			}
+			prelink = this.preparePreLink(result.prelink);
+			if(result.previous) {
+				html += '<li><a href="' + prelink + result.previous + '">' + this.options.translator('PREVIOUS') + '</a></li>';
+			}
+			if(result.range.length) {
+				for( i = 0, len = result.range.length; i < len; i++) {
+					if(result.range[i] === result.current) {
+						html += '<li class="active"><a href="' + prelink + result.range[i] + '">' + result.range[i] + '</a></li>';
+					} else {
+						html += '<li><a href="' + prelink + result.range[i] + '">' + result.range[i] + '</a></li>';
+					}
+				}
+			}
+			if(result.next) {
+				html += '<li><a href="' + prelink + result.next + '" class="paginator-next">' + this.options.translator('NEXT') + '</a></li>';
+			}
+			html += '</ul></div>';
+			return html;
+		}
+	});
+	console.log(boostrapPaginator.render());
+
 ### OR
 
 	var pagination = require('pagination');
@@ -26,21 +62,6 @@ Pagination for javascript/nodejs
 		<a href="/?page=11" class="paginator-page">11</a>
 		<a href="/?page=12" class="paginator-page paginator-page-last">12</a>
 		<a href="/?page=11" class="paginator-next">Next</a>
-	</div>
-
-### OR 
-
-	var pagination = require('pagination');
-	var paginator = new pagination.ItemPaginator({prelink:'/', slashSeparator: true, current: 3, rowsPerPage: 200, totalResult: 10020});
-	console.log(paginator.render());
-	
-	// output (without newlines)
-	<div class="paginator">
-		<span class="paginator-current-report">Results 401 - 600 of 10020</span>
-		<a href="/page/1" class="paginator-first">First</a>
-		<a href="/page/2" class="paginator-previous">Previous</a>
-		<a href="/page/4" class="paginator-next">Next</a>
-		<a href="/page/51" class="paginator-last">Last</a>
 	</div>
 
 ### OR need data from the calculation

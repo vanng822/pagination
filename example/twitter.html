@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+	<script src="../release/pagination.full.min.js"></script>
+	</head>
+	<body>
+		<div id="paging">
+		</div>
+		<script type="text/html" id="pagination-template">
+			<ul class="pagination">
+				<% if (first) { %>
+				<li><a href="<%=preparedPreLink + first %>">&laquo;&laquo;</a></li>
+				<% } %>
+				<% if (previous) {%>
+				<li><a href="<%=preparedPreLink + previous %>">&laquo;</a></li>
+				<% } %>
+				<% for ( var i = 0; i < range.length; i++ ) {
+					if (i == current) {%>
+					<li class="active"><a href="<%=preparedPreLink %><%=range[i]%>" ><%=range[i]%></a></li>
+					<% } else { %>
+					<li><a href="<%=preparedPreLink %><%=range[i]%>" ><%=range[i]%></a></li>
+				<% } } %>
+				<% if (next) { %>
+					<li><a href="<%=preparedPreLink + next %>">&raquo;</a></li>
+				<% } %>
+				<% if (last) {%>
+					<li><a href="<%=preparedPreLink + last %>">&raquo;&raquo;</a></li>
+				<% } %>
+			</ul>
+
+		</script>
+		<script type="text/javascript">
+		(function() {
+			var paginator = new pagination.TemplatePaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020, slashSeparator: true, template: document.getElementById("pagination-template").innerHTML});
+			var html = paginator.render();
+			console.log(html);
+			document.getElementById("paging").innerHTML = html;
+		})();
+		</script>
+	</body>
+</html>
