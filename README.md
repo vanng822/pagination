@@ -11,7 +11,8 @@ Pagination for javascript/nodejs
 	var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
 	console.log(paginator.render());
 
-### Or customized renderer, example for generating markup for twitter boostrap, see example/twitter.html for template rendering
+### Or customized renderer
+This example show how to generate markup for twitter boostrap, see example/twitter.html for template rendering
 
 	var pagination = require('pagination')
 
