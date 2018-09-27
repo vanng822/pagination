@@ -6,104 +6,108 @@ Pagination for javascript/nodejs
 
 
 ## usage example
-
-	var pagination = require('pagination');
-	var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
-	console.log(paginator.render());
-
+```js
+var pagination = require('pagination');
+var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+console.log(paginator.render());
+```
 ### Or customized renderer
 This example show how to generate markup for twitter boostrap, see example/twitter.html for template rendering
+```js
+var pagination = require('pagination')
 
-	var pagination = require('pagination')
-
-	var boostrapPaginator = new pagination.TemplatePaginator({
-		prelink:'/', current: 3, rowsPerPage: 200,
-		totalResult: 10020, slashSeparator: true,
-		template: function(result) {
-			var i, len, prelink;
-			var html = '<div><ul class="pagination">';
-			if(result.pageCount < 2) {
-				html += '</ul></div>';
-				return html;
-			}
-			prelink = this.preparePreLink(result.prelink);
-			if(result.previous) {
-				html += '<li><a href="' + prelink + result.previous + '">' + this.options.translator('PREVIOUS') + '</a></li>';
-			}
-			if(result.range.length) {
-				for( i = 0, len = result.range.length; i < len; i++) {
-					if(result.range[i] === result.current) {
-						html += '<li class="active"><a href="' + prelink + result.range[i] + '">' + result.range[i] + '</a></li>';
-					} else {
-						html += '<li><a href="' + prelink + result.range[i] + '">' + result.range[i] + '</a></li>';
-					}
-				}
-			}
-			if(result.next) {
-				html += '<li><a href="' + prelink + result.next + '" class="paginator-next">' + this.options.translator('NEXT') + '</a></li>';
-			}
+var boostrapPaginator = new pagination.TemplatePaginator({
+	prelink:'/', current: 3, rowsPerPage: 200,
+	totalResult: 10020, slashSeparator: true,
+	template: function(result) {
+		var i, len, prelink;
+		var html = '<div><ul class="pagination">';
+		if(result.pageCount < 2) {
 			html += '</ul></div>';
 			return html;
 		}
-	});
-	console.log(boostrapPaginator.render());
-
+		prelink = this.preparePreLink(result.prelink);
+		if(result.previous) {
+			html += '<li class="page-item"><a class="page-link" href="' + prelink + result.previous + '">' + this.options.translator('PREVIOUS') + '</a></li>';
+		}
+		if(result.range.length) {
+			for( i = 0, len = result.range.length; i < len; i++) {
+				if(result.range[i] === result.current) {
+					html += '<li class="active page-item"><a class="page-link" href="' + prelink + result.range[i] + '">' + result.range[i] + '</a></li>';
+				} else {
+					html += '<li class="page-item"><a class="page-link" href="' + prelink + result.range[i] + '">' + result.range[i] + '</a></li>';
+				}
+			}
+		}
+		if(result.next) {
+			html += '<li class="page-item"><a class="page-link" href="' + prelink + result.next + '" class="paginator-next">' + this.options.translator('NEXT') + '</a></li>';
+		}
+		html += '</ul></div>';
+		return html;
+	}
+});
+console.log(boostrapPaginator.render());
+```
 ### OR
+```js
+var pagination = require('pagination');
+var paginator = new pagination.SearchPaginator({prelink:'/', current: 10, rowsPerPage: 200, totalResult: 10020});
+console.log(paginator.render());
+// output (without newlines)
+```
 
-	var pagination = require('pagination');
-	var paginator = new pagination.SearchPaginator({prelink:'/', current: 10, rowsPerPage: 200, totalResult: 10020});
-	console.log(paginator.render());
-	
-	// output (without newlines)
-	<div class="paginator">
-		<a href="/?page=9" class="paginator-previous">Previous</a>
-		<a href="/?page=8" class="paginator-page paginator-page-first">8</a>
-		<a href="/?page=9" class="paginator-page">9</a>
-		<a href="/?page=10" class="paginator-current">10</a>
-		<a href="/?page=11" class="paginator-page">11</a>
-		<a href="/?page=12" class="paginator-page paginator-page-last">12</a>
-		<a href="/?page=11" class="paginator-next">Next</a>
-	</div>
-
+```html
+<div class="paginator">
+	<a href="/?page=9" class="paginator-previous">Previous</a>
+	<a href="/?page=8" class="paginator-page paginator-page-first">8</a>
+	<a href="/?page=9" class="paginator-page">9</a>
+	<a href="/?page=10" class="paginator-current">10</a>
+	<a href="/?page=11" class="paginator-page">11</a>
+	<a href="/?page=12" class="paginator-page paginator-page-last">12</a>
+	<a href="/?page=11" class="paginator-next">Next</a>
+</div>
+```
 ### OR need data from the calculation
+```js
+var pagination = require('pagination');
+var paginator = new pagination.SearchPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
+console.log(paginator.getPaginationData());
 
-	var pagination = require('pagination');
-	var paginator = new pagination.SearchPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
-	console.log(paginator.getPaginationData());
-	
-	// output
-	{ prelink: '/',
-	  current: 3,
-	  previous: 2,
-	  next: 4,
-	  first: 1,
-	  last: 51,
-	  range: [ 1, 2, 3, 4, 5 ],
-	  fromResult: 401,
-	  toResult: 600,
-	  totalResult: 10020,
-	  pageCount: 51 }
-	  
+// output
+{ prelink: '/',
+  current: 3,
+  previous: 2,
+  next: 4,
+  first: 1,
+  last: 51,
+  range: [ 1, 2, 3, 4, 5 ],
+  fromResult: 401,
+  toResult: 600,
+  totalResult: 10020,
+  pageCount: 51 }
+```
 ## Pagination on client side
-	<html>
-		<head>
-		<script src="../release/pagination.full.min.js"></script>
-		</head>
-		<body>
-			<div id="paging"></div>
-			<script type="text/javascript">
-			(function() {
-				var paginator = new pagination.ItemPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
-				var html = paginator.render();
-				var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
-				html += paginator.render();
-				document.getElementById("paging").innerHTML = html;
-			})();
-			</script>
-		</body>
-	</html>
-
+```html
+<html>
+	<head>
+	<script src="../release/pagination.full.min.js"></script>
+	</head>
+	<body>
+		<div id="paging"></div>
+		<script type="text/javascript">
+		(function() {
+			var paginator = new pagination.ItemPaginator({prelink:'/', current: 3, rowsPerPage: 200, totalResult: 10020});
+			var html = paginator.render();
+			var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+			html += paginator.render();
+			document.getElementById("paging").innerHTML = html;
+		})();
+		</script>
+	</body>
+</html>
+```
 You can browse example folder for more. Release folder contains all mimified versions for browser. To customize your need you can use ./bin/build.js -h
+				html += paginator.render();
 
 ## Classes
 ### SearchPaginator(options)
@@ -191,25 +195,25 @@ For supporting multiple versions of translation of CURRENT_PAGE_REPORT. It can u
 
 ### translator: {Function}
 For translations of FIRST, NEXT, ... Simple example
+```js
+var translations = {
+	'PREVIOUS' : 'Voorgaand',
+	'NEXT' : 'Volgende',
+	'FIRST' : 'Eerst',
+	'LAST' : 'Laatste',
+	'CURRENT_PAGE_REPORT' : 'Resulten {FromResult} - {ToResult} van {TotalResult}'
+};
 
-	var translations = {
-		'PREVIOUS' : 'Voorgaand',
-		'NEXT' : 'Volgende',
-		'FIRST' : 'Eerst',
-		'LAST' : 'Laatste',
-		'CURRENT_PAGE_REPORT' : 'Resulten {FromResult} - {ToResult} van {TotalResult}'
-	};
-	
-	var item = new ItemPaginator({
-		prelink : '/',
-		pageLinks : 5,
-		current : 5,
-		totalResult : 100,
-		translator : function(str) {
-			return translations[str];
-		}
-	});
-
+var item = new ItemPaginator({
+	prelink : '/',
+	pageLinks : 5,
+	current : 5,
+	totalResult : 100,
+	translator : function(str) {
+		return translations[str];
+	}
+});
+```
 ### pageParamName: {String}
 The name of the page parameter. Default is "page"
 
